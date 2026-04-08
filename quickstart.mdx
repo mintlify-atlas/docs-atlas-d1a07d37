@@ -1,80 +1,131 @@
 ---
-title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+title: "Quick Start"
+description: "Install the Steve Jobs Skill and get your first response in under two minutes."
 ---
 
-## Get started in three steps
+## Prerequisites
 
-Get your documentation site running locally and make your first customization.
+You need [Claude Code](https://claude.ai/code) installed and running. No other dependencies.
 
-### Step 1: Set up your local environment
+## Install
 
-<AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
-    
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
-    
-    <Tip>Your preview updates automatically as you edit files.</Tip>
-  </Accordion>
-</AccordionGroup>
+<Steps>
+  <Step title="Run the install command">
+    In your terminal, run:
 
-### Step 2: Deploy your changes
+    ```bash
+    npx skills add alchaincyf/steve-jobs-skill
+    ```
 
-<AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
-    
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-</Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
+    This fetches `SKILL.md` from [alchaincyf/steve-jobs-skill](https://github.com/alchaincyf/steve-jobs-skill) and registers it with Claude Code.
+  </Step>
+  <Step title="Open Claude Code">
+    Start a new session in Claude Code. The skill is now available globally — you don't need to reference it by name in every message.
+  </Step>
+  <Step title="Activate with a trigger phrase">
+    Say anything that invokes Jobs' perspective. The skill recognizes a range of phrases:
 
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
+    <CodeGroup>
+      ```text Chinese (product analysis)
+      用乔布斯的视角帮我分析这个产品方向
+      ```
 
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
-  </Accordion>
-</AccordionGroup>
+      ```text Chinese (competitive analysis)
+      Jobs会怎么看AI Agent的竞争格局？
+      ```
 
-### Step 3: Go live
+      ```text Chinese (decision review)
+      切换到乔布斯，我在纠结三件事
+      ```
 
-<Accordion icon="rocket" title="Publish your docs">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
-</Accordion>
+      ```text English
+      What would Jobs think about this product?
+      ```
+    </CodeGroup>
+  </Step>
+  <Step title="Read the one-time disclaimer">
+    On first activation per session, the skill displays a single disclaimer:
+
+    > "I'm responding from Jobs' perspective, based on his public statements — not his actual views."
+
+    This appears **once**. It will not repeat in follow-up turns.
+  </Step>
+</Steps>
+
+## Your first conversation
+
+Here's a real example from the first session with the skill. The question was about AI hardware:
+
+> **You:** 如果要在这个时代做AI硬件产品，你会选择做什么？
+
+The skill's response (abbreviated):
+
+> AI hardware is where the PC industry was in 1977. Everyone's building the equivalent of the Altair 8800 — impressive to geeks, useless to your mom. Rabbit, Humane Pin — those are shit.
+>
+> 我不会做一个新品类。我会重新定义一个已经存在的品类。
+>
+> iPhone不是第一个手机。iPod不是第一个MP3播放器。我们从来不发明品类，我们重新定义品类。
+>
+> 答案：耳机。一个always-on的个人AI界面。An AI that lives in your ear.
+
+Notice what happened:
+- No preamble. The verdict came first ("those are shit").
+- It applied the **Whole Widget** model (end-to-end control) and **subtract-first** heuristic (redefine, don't invent).
+- It cited specific products (Rabbit, Humane Pin) rather than speaking in abstractions.
+
+## Example prompts
+
+<CardGroup cols={2}>
+  <Card title="Product critique" icon="magnifying-glass">
+    `乔布斯会怎么评价这个产品的交互设计？`
+  </Card>
+  <Card title="Competitive analysis" icon="chart-bar">
+    `用Jobs模式分析OpenAI和Anthropic谁的方向更对？`
+  </Card>
+  <Card title="Decision review" icon="scale-balanced">
+    `如果乔布斯，他会怎么选：做平台还是做垂直产品？`
+  </Card>
+  <Card title="Direct feedback" icon="comment">
+    `帮我用乔布斯的角度想想这个功能列表该砍哪些？`
+  </Card>
+</CardGroup>
+
+## Exit role-play
+
+To return Claude Code to normal mode, say any of the following:
+
+```text
+退出
+切回正常
+不用扮演了
+exit character
+```
+
+## How the skill works under the hood
+
+Every question goes through three steps before a response is generated:
+
+1. **Classify** — Is this a factual question (about a real product or market), a pure framework question (about product philosophy), or mixed?
+2. **Research** — For factual and mixed questions, the skill uses web search to fetch real product data, reviews, and competitive context. It does not guess from training data.
+3. **Answer** — The response applies the relevant mental models, uses Jobs' expression DNA (short sentences, no hedging, headline first), and cites specific details.
+
+<Tip>
+  For the best results, ask about real, specific things — a product you're building, a competitor you're watching, a decision you're facing. Vague questions get more generic answers. The more concrete the input, the more useful the output.
+</Tip>
 
 ## Next steps
 
-Now that you have your docs running, explore these key features:
-
 <CardGroup cols={2}>
-
-<Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-  Learn MDX syntax and start writing your documentation.
-</Card>
-
-<Card title="Customize style" icon="palette" href="/essentials/settings">
-  Make your docs match your brand perfectly.
-</Card>
-
-<Card title="Add code examples" icon="square-code" href="/essentials/code">
-  Include syntax-highlighted code blocks.
-</Card>
-
-<Card title="API documentation" icon="code" href="/api-reference/introduction">
-  Auto-generate API docs from OpenAPI specs.
-</Card>
-
+  <Card title="Mental Models" icon="brain" href="/mental-models/overview">
+    Understand the 6 frameworks the skill applies — so you can recognize when each one activates.
+  </Card>
+  <Card title="Decision Heuristics" icon="list-check" href="/heuristics/overview">
+    The 8 practical rules with the Apple case studies behind each one.
+  </Card>
+  <Card title="Expression DNA" icon="dna" href="/expression/style-guide">
+    Learn the vocabulary and rhetorical patterns that define Jobs' voice.
+  </Card>
+  <Card title="Example conversations" icon="comments" href="/reference/examples">
+    Full multi-turn conversations showing the skill applied to real questions.
+  </Card>
 </CardGroup>
-
-<Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
-</Note>

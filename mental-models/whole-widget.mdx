@@ -1,0 +1,63 @@
+---
+title: "The Whole Widget"
+description: "True ownership of the user experience requires controlling the entire stack — hardware, software, and services."
+---
+
+> "People who are really serious about software should make their own hardware."
+
+## One-sentence summary
+
+You cannot deliver a great user experience across a supply chain you don't control.
+
+## Primary evidence
+
+<Note>
+  Jobs frequently cited this line from **Alan Kay**, the computer scientist who pioneered object-oriented programming at Xerox PARC. Jobs used it to justify vertical integration not as a business strategy but as a philosophical position: if you care about the end result, you must own the means of producing it.
+
+  Jobs extended the principle beyond software and hardware:
+
+  > "We're the only company that owns the whole widget — the hardware, the software, and the operating system. We can take full responsibility for the user experience. We do it not to make money. We do it because we care about the experience."
+</Note>
+
+### The vertical integration chain: Mac → iPod → iPhone → iPad
+
+Each product generation shows the model applied at greater depth:
+
+| Product | What Apple controlled |
+|---|---|
+| **Mac (1984)** | Hardware design, OS, bundled apps. No software licensing to clone makers. |
+| **iPod (2001)** | Device hardware, firmware, iTunes software, iTunes Store content delivery. End-to-end from song purchase to earphone. |
+| **iPhone (2007)** | Chip design (later), hardware, iOS, App Store distribution, carrier relationships. |
+| **iPad (2010)** | Same stack as iPhone, plus new input paradigm — eliminated the keyboard entirely. |
+
+Each step down the list represents Apple taking control of a layer that had previously been owned by someone else — a third-party chip vendor, a carrier, a content distributor, a software platform.
+
+## How to apply it
+
+When evaluating a product strategy or technical architecture, map the experience chain from raw materials to the user's perception. Then ask: at which layers does someone else make decisions that affect the final experience?
+
+<AccordionGroup>
+  <Accordion title="For product teams">
+    List every dependency in your product that your team does not control. Each one is a potential quality ceiling. This doesn't mean you must own everything — it means you must consciously decide which dependencies you can tolerate and which are incompatible with your quality targets.
+  </Accordion>
+  <Accordion title="For platform decisions">
+    Choosing to build on someone else's platform (AWS, App Store, Android) means accepting their roadmap as a constraint on your experience. That tradeoff is sometimes correct. The Whole Widget model forces you to make it explicitly rather than by default.
+  </Accordion>
+  <Accordion title="For evaluating competitors">
+    A competitor who controls more of the experience chain than you has a structural advantage in quality and differentiation. They can make changes you cannot. This was Apple's persistent edge over PC makers who depended on Microsoft for the OS and Intel for the chip.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+  You don't need to own everything to apply this model. You need to know which layers matter most to the experience you're trying to deliver, and ensure you have control or deep partnership at those layers.
+</Tip>
+
+## Known limitation
+
+<Warning>
+  **Horizontal models also win.** Bill Gates chose the opposite strategy: license Windows to every PC manufacturer. Microsoft never "owned the whole widget" — it owned the OS layer and let hardware commoditize beneath it. The result was 95% market share in desktop operating systems through the 1990s.
+
+  The Whole Widget model delivers superior experience for users willing to pay a premium. It does not win on market coverage. Apple's Mac had roughly 5% market share for decades while delivering what most users agreed was the better product. That's a real tradeoff, not a failure of the model.
+
+  The model is most applicable when: (1) your target users value quality and experience over cost, (2) you can sustain the higher cost structure of vertical integration, and (3) the experience you're trying to deliver genuinely requires end-to-end control.
+</Warning>
